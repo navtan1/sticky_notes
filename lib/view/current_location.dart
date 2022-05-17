@@ -65,21 +65,17 @@ class _CurrentLocatState extends State<CurrentLocat> {
         onPressed: () async {
           Position position = await _determinePosition();
 
-          _controller!.animateCamera(
-            CameraUpdate.newCameraPosition(
+          _controller!.animateCamera(CameraUpdate.newCameraPosition(
               CameraPosition(
                   target: LatLng(position.latitude, position.longitude),
-                  zoom: 14),
-            ),
-          );
+                  zoom: 14)));
+
           markers.clear();
 
-          markers.add(
-            Marker(
+          markers.add(Marker(
               markerId: MarkerId("current Location"),
-              position: LatLng(position.latitude, position.longitude),
-            ),
-          );
+              position: LatLng(position.latitude, position.longitude)));
+
           setState(() {});
         },
         child: Icon(Icons.my_location),
