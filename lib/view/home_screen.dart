@@ -6,7 +6,7 @@ import 'package:sticky_notes/constant.dart';
 import 'package:sticky_notes/controller/sign_up_button_controller.dart';
 import 'package:sticky_notes/firebase_service/firebase_services.dart';
 import 'package:sticky_notes/view/add_note.dart';
-import 'package:sticky_notes/view/google_map.dart';
+import 'package:sticky_notes/view/current_location.dart';
 import 'package:sticky_notes/view/open_notes.dart';
 import 'package:sticky_notes/view/profile.dart';
 import 'package:sticky_notes/view/sign_in_screen.dart';
@@ -46,6 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
       email = getUserData["email"];
       getImage = getUserData["image"];
     });
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
   }
 
   @override
@@ -108,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Divider(color: Colors.black45),
             GestureDetector(
               onTap: () {
-                Get.to(() => GoogleMap1());
+                Get.to(() => CurrentLocat());
               },
               child: ListTile(
                 leading: Icon(Icons.location_on),
