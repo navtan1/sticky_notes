@@ -109,13 +109,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () async {
                   await updatesNotes.updateNotes();
                   if (updatesNotes.change.value == true) {
+                    await updatesNotes.updateData();
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(
+                          content: Text("Updating"),
+                          duration: Duration(seconds: 5),
+                        ))
+                        .closed
+                        .then((value) => updatesNotes.updateData());
                     await updateData();
                   }
                 },
-                child: Text(
-                  updatesNotes.change.value ? "Edit" : "Done",
-                  style: TextStyle(color: Colors.black, fontSize: 15),
-                ),
+                child: updatesNotes.upDate.value
+                    ? Text(
+                        updatesNotes.change.value ? "Edit" : "Done",
+                        style: TextStyle(color: Colors.black, fontSize: 15),
+                      )
+                    : CircularProgressIndicator(color: Colors.blue),
               ),
             ],
           ),
