@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future updateData() async {
     String? imageUrl =
-        await uploadFile(_image!, "${kFirebaseAuth.currentUser!.email}");
+        await uploadFile(_image!, "${kFirebaseAuth.currentUser!.email}jpg");
 
     collectionReference.doc(kFirebaseAuth.currentUser!.uid).update({
       "first name": fName.text,
