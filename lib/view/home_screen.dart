@@ -61,22 +61,23 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-                accountName: Text(
-                  "$fName $lName",
-                  style: TextStyle(fontSize: 25),
+              accountName: Text(
+                "$fName $lName",
+                style: TextStyle(fontSize: 25),
+              ),
+              accountEmail: Text(
+                "$email",
+                style: TextStyle(fontSize: 13),
+              ),
+              currentAccountPicture: Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: NetworkImage("$getImage"), fit: BoxFit.cover),
                 ),
-                accountEmail: Text(
-                  "$email",
-                  style: TextStyle(fontSize: 13),
-                ),
-                currentAccountPicture: Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage("$getImage"), fit: BoxFit.cover),
-                  ),
-                )),
+              ),
+            ),
             GestureDetector(
               onTap: () {
                 Get.to(() => ProfileScreen(
